@@ -8,7 +8,7 @@ public class HandLoaderMono_SleepyMoveMapToHandsPositions : MonoBehaviour{
     public HandLoaderMono_CurrentHandState m_currentState;
     public Transform m_whatToMove;
 
-
+    public bool m_forceUpForCeilingGroundAndFlat = true;
 
     public void SetWithFrameCondition(bool isInCondition, HandsFlatClockStateFrame frame)
     {
@@ -35,6 +35,20 @@ public class HandLoaderMono_SleepyMoveMapToHandsPositions : MonoBehaviour{
             Debug.DrawRay(center, leftToRight, Color.red);
             m_whatToMove.position = center;
             m_whatToMove.rotation = Quaternion.LookRotation(forward, Vector3.up);
+            if (m_forceUpForCeilingGroundAndFlat)
+            {
+
+                if (m_handsFrame.m_handFlatStandingTypeRight == HandFlatStandingType.FlatHorizontalSurface
+                    || m_handsFrame.m_handFlatStandingTypeRight == HandFlatStandingType.Ground)
+                {
+                    forward.y = 0f;
+                    m_whatToMove.rotation = Quaternion.LookRotation(forward, Vector3.up);
+                }
+                else if (m_handsFrame.m_handFlatStandingTypeRight == HandFlatStandingType.Ceiling) { 
+                    forward.y = 0f;
+                    m_whatToMove.rotation = Quaternion.LookRotation(forward, Vector3.down);
+                }
+            }
             
 
         }
