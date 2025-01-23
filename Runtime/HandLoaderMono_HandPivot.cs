@@ -18,7 +18,11 @@ public class HandLoaderMono_HandPivot : MonoBehaviour {
     public Vector3 m_position;
     public Quaternion m_rotation;
 
+    public Transform m_debugAnchor;
+
     public bool m_inverseRotation = false;
+
+
 
     public void Update()
     {
@@ -36,7 +40,7 @@ public class HandLoaderMono_HandPivot : MonoBehaviour {
            Vector3 upDir= Vector3.Cross(
                m_leftFingerIndex.position - m_centerFingerIndex.position,
                m_rightFingerIndex.position - m_centerFingerIndex.position);
-            
+
             if (m_inverseRotation)
             {
                 upDir = -upDir;
@@ -59,13 +63,22 @@ public class HandLoaderMono_HandPivot : MonoBehaviour {
             Debug.DrawLine(m_position,
                m_position + m_rotation * Vector3.up * 0.1f, Color.green);
 
+           
+            
 
+            if (m_debugAnchor != null) { 
+                m_debugAnchor.position = m_position;
+                m_debugAnchor.rotation = m_rotation;
+                float lenghtLeftCenter = Vector3.Distance(m_leftFingerIndex.position, m_position);
+                float rightCenterLenght = Vector3.Distance(m_rightFingerIndex.position, m_position);
+                float topCenterLenght = Vector3.Distance(m_centerFingerIndex.position, m_position);
+                float maxSize = Mathf.Max(lenghtLeftCenter, rightCenterLenght, topCenterLenght);
+                m_debugAnchor.localScale = new Vector3(maxSize, maxSize, maxSize);
+            }
             
         }
-
         m_toMove.rotation = m_rotation;
         m_toMove.position = m_position;
-    
     }
 
 }

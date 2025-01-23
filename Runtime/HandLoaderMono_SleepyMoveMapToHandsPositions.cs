@@ -35,6 +35,7 @@ public class HandLoaderMono_SleepyMoveMapToHandsPositions : MonoBehaviour{
             Debug.DrawRay(center, leftToRight, Color.red);
             m_whatToMove.position = center;
             m_whatToMove.rotation = Quaternion.LookRotation(forward, Vector3.up);
+            
 
         }
     }
