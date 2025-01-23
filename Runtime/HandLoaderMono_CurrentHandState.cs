@@ -20,7 +20,7 @@ public class HandLoaderMono_CurrentHandState : MonoBehaviour {
     public Transform m_xrGuardianRoot;
     public Transform m_leftHandCenter;
     public Transform m_rightHandCenter;
-    public float m_isInRangeAngle = 20;
+    public float m_flatDetectionRangeAngle = 20;
 
     public HandsFlatClockStateFrame m_currentFrame;
 
@@ -71,16 +71,16 @@ public class HandLoaderMono_CurrentHandState : MonoBehaviour {
             height = localHandPosition.y;
         }
         
-        if (groundToUpAngle > 90 - m_isInRangeAngle &&
-            groundToUpAngle < 90 + m_isInRangeAngle)
+        if (groundToUpAngle > 90 - m_flatDetectionRangeAngle &&
+            groundToUpAngle < 90 + m_flatDetectionRangeAngle)
         {
             handFlatType = HandFlatStandingType.Wall;
         }
-        else if (groundToUpAngle < m_isInRangeAngle )
+        else if (groundToUpAngle < m_flatDetectionRangeAngle )
         {
             handFlatType = HandFlatStandingType.FlatHorizontalSurface;
         }
-        else if (groundToUpAngle > 180 - m_isInRangeAngle)
+        else if (groundToUpAngle > 180 - m_flatDetectionRangeAngle)
         {
             handFlatType = HandFlatStandingType.Ceiling;
         }

@@ -13,11 +13,11 @@ public class HandLoaderMono_ConditionRelayHandsFlatClockStateFrame : MonoBehavio
     public void SetFrame(HandsFlatClockStateFrame frame)
     {
         m_previousInCondition= m_isInCondition;
-        m_frame = frame;
         m_isInCondition = m_condition.IsInCondition(in frame);
+        m_frame = frame;
         if (m_isInCondition)
-            m_onInConditionUpdatedFrame.Invoke(m_isInCondition,m_frame);
-        if (m_previousInCondition && !m_isInCondition)
+            m_onInConditionUpdatedFrame.Invoke(m_isInCondition, frame);
+        if (m_previousInCondition != m_isInCondition)
             m_onConditionChangedFrame.Invoke(m_isInCondition, frame);
     }
 }
