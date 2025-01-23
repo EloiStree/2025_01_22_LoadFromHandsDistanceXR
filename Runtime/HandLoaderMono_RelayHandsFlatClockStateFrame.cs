@@ -17,9 +17,8 @@ public class HandLoaderMono_RelayHandsFlatClockStateFrame : MonoBehaviour
 }
 
 [System.Serializable]
-public class HandFlatCondition
+public class HandsFlatCondition
 {
-
     public HandFlatStandingType m_handPositionType;
     public float m_distanceBetweenHands = 0.15f;
     public float m_distanceErrorMargin = 0.05f;
@@ -28,10 +27,16 @@ public class HandFlatCondition
     
     public bool IsInCondition(in HandsFlatClockStateFrame frame)
     {
-        if (frame.m_handFlatStandingTypeLeft != HandFlatStandingType.Any) { 
-            if (frame.m_handFlatStandingTypeLeft != m_handPositionType) return false;
-            if (frame.m_handFlatStandingTypeRight != m_handPositionType) return false;
+        if (m_handPositionType == HandFlatStandingType.Any) {}
+        else { 
+
+            if (frame.m_handFlatStandingTypeLeft != m_handPositionType) 
+                return false;
+
+            if (frame.m_handFlatStandingTypeRight != m_handPositionType) 
+                return false;
         }
+
         float distance = frame.m_distanceBetweenHands;
         if (distance < m_distanceBetweenHands - m_distanceErrorMargin) return false;
         if (distance > m_distanceBetweenHands + m_distanceErrorMargin) return false;

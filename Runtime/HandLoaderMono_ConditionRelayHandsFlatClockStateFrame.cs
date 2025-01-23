@@ -4,11 +4,12 @@ using UnityEngine.Events;
 public class HandLoaderMono_ConditionRelayHandsFlatClockStateFrame : MonoBehaviour
 {
     public HandsFlatClockStateFrame m_frame;
-    public HandFlatCondition m_condition;
+    public HandsFlatCondition m_condition;
     public bool m_isInCondition;
     private bool m_previousInCondition;
     public UnityEvent<bool,HandsFlatClockStateFrame> m_onInConditionUpdatedFrame;
     public UnityEvent<bool,HandsFlatClockStateFrame> m_onConditionChangedFrame;
+  
     public void SetFrame(HandsFlatClockStateFrame frame)
     {
         m_previousInCondition= m_isInCondition;
