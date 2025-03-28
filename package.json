@@ -1,19 +1,26 @@
 
 {                                                                                
   "name": "be.elab.handsloader",                              
-  "displayName": "Hands Loader",                        
-  "version": "0.0.1",                         
+  "displayName": "Hands Loader",                    
   "unity": "2018.1",                             
   "unityRelease": "",                             
   "description": "Allows to use hand flat on table, wall, ground ... To load asset and scene.",                         
   "keywords": ["Script","Tool"],                       
   "dependencies":{},     
-  "relatedPackages":{},     
-  "samples" : [],     
-  "author" : {
-"name":"Eloi Stree",
-"mail":"",
-"url":""},     
+  "relatedPackages":{},   
+  "version": "2025.3.25",
+  "samples": [
+    {
+      "displayName": "Demo Scene",
+      "description": "Sample scene(s) of this package.",
+      "path": "Scene/Demo"
+    }
+  ],
+  "author": {
+    "name": "Eloi Stree",
+    "mail": "eloistree@gmail.com",
+    "url": "https://github.com/EloiStree/"
+  },
   "repository":{
 "type":"Git",
 "url":"https://github.com/EloiStree/2025_01_22_LoadFromHandsDistanceXR.git",
